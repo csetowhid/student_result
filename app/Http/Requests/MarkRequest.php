@@ -25,14 +25,16 @@ class MarkRequest extends FormRequest
     public function rules()
     {
         return [
-            'marks[]' => [
+            'marks.*' => [
                 'required',
+                // 'in_array:marks.*',
             ],
             'student_id' => [
                 'required',
             ],
             'subject_id' =>[
                 'required',
+                // 'in_array:subject_id.*'
             ],
         ];
     }
@@ -41,7 +43,7 @@ class MarkRequest extends FormRequest
     {
         return [
             'student_id.required' => 'Student ID Field Is Required',
-            'marks[].required' => 'Marks Field Is Required',
+            'marks.*.required' => 'Marks Field Is Required',
         ];
     }
 }

@@ -170,12 +170,12 @@
                   <p>Add</p>
                 </a>
               </li>
-              {{-- <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+              <li class="nav-item">
+                <a href="{{route('students.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View</p>
+                  <p>All Students</p>
                 </a>
-              </li> --}}
+              </li>
               
             </ul>
           </li>

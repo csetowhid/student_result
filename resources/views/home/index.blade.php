@@ -100,6 +100,7 @@
         <tr>
           <th class="text-center">Position</th>
           <th class="text-center">Student Name</th>
+          <th class="text-center">Class Name</th>
           <th class="text-center">Total Marks</th>
           <th class="text-center">Action</th>
         </tr> 
@@ -109,6 +110,7 @@
           <tr>
             <td class="text-center">{{$key  + 1}}</td>
             <td class="text-center">{{$mark->first_name}}</td>
+            <td class="text-center">{{$mark->clas_name}}</td>
             <td class="text-center">{{$mark->marks}}</td>
             <td class="text-center">
               <button class="btn btn-success">

@@ -15,6 +15,8 @@ class HomeController extends Controller
         //     ->get();
 
            $data['marks']=Student::join('marks', 'students.id','=','marks.student_id')
+           ->join('studentclasses','students.class_id','=','studentclasses.id')
+           ->select('studentclasses.class_name as clas_name')
            ->selectRaw('students.*, SUM(marks.marks) AS marks')
            ->groupBy('students.id')
            ->orderBy('marks', 'desc')

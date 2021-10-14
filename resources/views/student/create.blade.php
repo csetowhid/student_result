@@ -21,7 +21,15 @@
          
             <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Add New Student</h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h3 class="card-title">Add New Student</h3>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                      <a href="{{route('students.index')}}">All Students</a>
+                    </div>
+                  </div>
+                  
                 </div>
                 <form action="{{route('students.store')}}" method="POST">
                   @csrf

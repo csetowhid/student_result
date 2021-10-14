@@ -17,7 +17,14 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        // $data['students'] = Student::all()
+        
+        // ->paginate(4);
+
+        $data['students'] = Student::with('classname')->get();
+        // dd($data);
+        return view('student.view',$data);
+
     }
 
     /**
