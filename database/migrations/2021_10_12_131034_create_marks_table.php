@@ -15,8 +15,8 @@ class CreateMarksTable extends Migration
     {
         Schema::create('marks', function (Blueprint $table) {
             $table->id();
-            $table->integer('marks');
             $table->unsignedBigInteger('student_id');
+            $table->integer('marks');
             $table->unsignedBigInteger('subject_id');
             $table->timestamps();
 

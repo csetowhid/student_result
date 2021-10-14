@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRequest;
 use App\Models\Mark;
-use App\Models\Marks;
 use App\Models\Student;
+use App\Models\Studentclass;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -27,7 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create');
+        $data['studentclass'] = Studentclass::all();
+        return view('student.create',$data);
     }
 
     /**
@@ -42,6 +43,7 @@ class StudentController extends Controller
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
             'email' => $request->get('email'),
+            'class_id' => $request->get('class_id'),
         ]);
 
         if(empty($student)){

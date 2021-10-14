@@ -25,23 +25,22 @@ class MarkRequest extends FormRequest
     public function rules()
     {
         return [
-            'marks' => [
-                'required',
-            ],
+            // 'marks' => [
+            //     'required',
+            // ],
             'student_id' => [
                 'required',
             ],
-            'subject_id' =>[
-                Rule::unique('marks')->ignore($this->route('marks')),
-                'required',
-            ],
+            // 'subject_id' =>[
+            //     'required',
+            // ],
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'subject_id.unique' => 'Subject Already Exists For This Student'
-        ];
-    }
+    // public function messages()
+    // {
+    //     return [
+    //         'subject_id.unique' => 'Subject Already Exists For This Student'
+    //     ];
+    // }
 }

@@ -17,7 +17,7 @@
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="mx-auto col-lg-6 col-6">
+        <div class="mx-auto col-lg-8 col-8">
          
             <div class="card card-primary">
                 <div class="card-header">

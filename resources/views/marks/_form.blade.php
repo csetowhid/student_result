@@ -1,9 +1,4 @@
 <div class="card-body">
-  {{-- @if($errors->any())
-  @foreach ($errors->all() as $error)
-     <div>{{ $error }}</div>
- @endforeach
-@endif  --}}
     <div class="form-group">
       <label>Student</label>
       <select class="form-control" name="student_id" required>
@@ -15,7 +10,23 @@
         @endif
       </select>
     </div>
-    <div class="form-group">
+
+    <div class="row">
+      @if(!empty($subjects))
+        @foreach ($subjects as $subject)
+      <div class="col-md-6">
+        <label class="form-control">{{$subject->subject_name}}</label>
+        <input type="hidden" name="subject_id[]" value="{{$subject->id}}">
+      </div>
+      <div class="col-md-6">
+        <input type="number" name="marks[]" class="form-control" placeholder="Enter Mark" min="0" max="100" required>
+      </div>
+        @endforeach
+        @endif
+      </div>
+    </div>
+
+    {{-- <div class="form-group">
       <label>Subject</label>
       <select class="form-control" name="subject_id" required>
         <option value="">Select</option>
@@ -25,13 +36,12 @@
         @endforeach
         @endif
       </select>
-      {{-- <p>{{$errors->first('subject_id')}}</p> --}}
-    </div>
-    <div class="form-group">
+      
+    </div> --}}
+    {{-- <div class="form-group">
       <label for="Email address">Mark</label>
       <input type="number" name="marks" class="form-control" placeholder="Enter Mark" min="0" max="100" required>
-      {{-- <p>{{$errors->first('last_name')}}</p> --}}
-    </div>
+    </div> --}}
   </div>
   <div class="card-footer">
     <button type="submit" class="btn btn-primary">Insert</button>

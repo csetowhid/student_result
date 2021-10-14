@@ -170,12 +170,12 @@
                   <p>Add</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="pages/forms/advanced.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View</p>
                 </a>
-              </li>
+              </li> --}}
               
             </ul>
           </li>
@@ -195,12 +195,12 @@
                   <p>Add</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="pages/forms/advanced.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View</p>
                 </a>
-              </li>
+              </li> --}}
               
             </ul>
           </li>
@@ -220,13 +220,12 @@
                   <p>Add</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="pages/forms/advanced.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View</p>
                 </a>
-              </li>
-              
+              </li> --}}
             </ul>
           </li>
 
@@ -245,12 +244,12 @@
                   <p>Add</p>
                 </a>
               </li>
-              {{-- <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+              <li class="nav-item">
+                <a href="{{route('classstudent')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View</p>
+                  <p>Students</p>
                 </a>
-              </li> --}}
+              </li>
               
             </ul>
           </li>
@@ -270,6 +269,16 @@
                 <p id="successMessage" class="w-50 mx-auto alert alert-danger text-center w-80">{{ $error }}</p>
             @endforeach
     @endif
+
+
+    <!---------Message---------------->
+    @if (session('SUCCESS'))
+            <p id="successMessage" class="w-50 mx-auto alert alert-success text-center w-80">{{session('SUCCESS')}}</p>
+            @endif
+            @if (session('ERROR'))
+            <p id="successMessage" class="w-50 mx-auto alert alert-danger text-center w-80">{{session('ERROR')}}</p>
+            @endif
+    <!---------Message---------------->
     @yield('content')
   </div>
   <!-- /.content-wrapper -->

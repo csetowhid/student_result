@@ -13,5 +13,6 @@ class Student extends Model
         'first_name',
         'last_name',
         'email',
+        'class_id',
     ];
 }

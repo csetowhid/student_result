@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentclassRequest;
+use App\Models\Student;
 use App\Models\Studentclass;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,10 @@ class StudentclassController extends Controller
      */
     public function index()
     {
-        //
+        // $data['student_class'] = Student::groupBy('class_id')
+        //     ->selectRaw('count(id) as total_student')
+        //     ->get();
+        // return view('class.index',$data);
     }
 
     /**
@@ -43,7 +47,7 @@ class StudentclassController extends Controller
         if(empty($class)){
             return redirect()->back()->withInput();
         }
-        return redirect()->route('home')->with('SUCCESS',__("Class Has Been Added Successfully"));
+        return redirect()->route('studentclasses.index')->with('SUCCESS',__("Class Has Been Added Successfully"));
     }
 
     /**

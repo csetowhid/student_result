@@ -12,4 +12,10 @@ class Studentclass extends Model
     protected $fillable = [
         'class_name',
     ];
+
+
+    public function cls_name()
+    {
+        return $this->belongsTo(Studentclass::class);
+    }
 }

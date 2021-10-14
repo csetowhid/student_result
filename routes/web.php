@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\ClassstudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\StudentclassController;
@@ -29,3 +30,5 @@ Route::resource('students', StudentController::class);
 Route::resource('subjects', SubjectController::class);
 Route::resource('marks', MarkController::class)->except('show');
 Route::resource('studentclasses',StudentclassController::class);
+
+Route::get('classstudent',[ClassstudentController::class, 'classstudent'])->name('classstudent');

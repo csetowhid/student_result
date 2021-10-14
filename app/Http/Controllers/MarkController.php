@@ -50,16 +50,50 @@ class MarkController extends Controller
      */
     public function store(MarkRequest $request)
     {
-        $marks = Mark::create([
-            'marks' => $request->get('marks'),
-            'student_id' => $request->get('student_id'),
-            'subject_id' => $request->get('subject_id'),
-        ]);
+        $subject = Mark::where('student_id', $request->student_id)
+        ->where('subject_id', $request->subject_id)
+        ->first();
 
-        if(empty($marks)){
-            return redirect()->back()->withInput();
+        if($subject) {
+            return redirect()->back()->withInput()->with("ERROR", __("Marks already exist"));
         }
-        return redirect()->route('home')->with('SUCCESS',__("Marks Has Been Added Successfully"));
+
+        /* --------Method -1 ------------
+        $subject = $request->subject_id;
+        $mark = $request->marks;
+        for($i=0; $i<count($subject);$i++){
+            $datasave = [
+                'subject_id' => $subject[$i],
+                'marks' => $mark[$i],
+                'student_id' => $request->student_id,
+            ];
+            Mark::insert($datasave);
+        }
+
+        ------------------------------------*/
+
+        /* --------Method -2 ------------
+        // for($i=0; $i<count($subject);$i++){
+        //     $data = Mark::create ([
+        //         'subject_id' => $subject[$i],
+        //         'marks' => $mark[$i],
+        //         'student_id' => $request->student_id,
+        //     ]);
+        // }
+        ---------------------------------*/
+
+        for($i=0; $i < count($request->except('_token'));$i++){
+            $data = Mark::create ([
+                'subject_id' => $request->subject_id[$i],
+                'marks' => $request->marks[$i],
+                'student_id' => $request->student_id,
+            ]);
+        }
+
+        if(empty($data)) {
+            return redirect()->back()->withInput()->with("ERROR", __("Failed to Input"));
+        }
+        return redirect()->route('home')->with("SUCCESS", __("Marks Added successfully"));
     }
 
     /**

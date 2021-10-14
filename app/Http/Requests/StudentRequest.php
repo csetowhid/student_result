@@ -35,6 +35,9 @@ class StudentRequest extends FormRequest
             'last_name' =>[
                 'required',
             ],
+            'class_id' => [
+                'required',
+            ],
         ];
     }
 
