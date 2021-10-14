@@ -27,14 +27,12 @@ class MarkRequest extends FormRequest
         return [
             'marks.*' => [
                 'required',
-                // 'in_array:marks.*',
             ],
             'student_id' => [
                 'required',
             ],
             'subject_id' =>[
                 'required',
-                // 'in_array:subject_id.*'
             ],
         ];
     }
