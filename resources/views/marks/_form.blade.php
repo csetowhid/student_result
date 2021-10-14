@@ -1,7 +1,7 @@
 <div class="card-body">
     <div class="form-group">
       <label>Student</label>
-      <select class="form-control" name="student_id" required>
+      <select class="form-control" name="student_id">
         <option value="">Select</option>
         @if(!empty($students))
         @foreach ($students as $student)
@@ -19,8 +19,9 @@
         <input type="hidden" name="subject_id[]" value="{{$subject->id}}">
       </div>
       <div class="col-md-6">
-        <input type="number" name="marks[]" class="form-control" placeholder="Enter Mark" min="0" max="100" required>
+        <input type="number" name="marks[]" class="form-control" placeholder="Enter Mark" min="0" max="100">
       </div>
+     
         @endforeach
         @endif
       </div>

@@ -25,22 +25,23 @@ class MarkRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'marks' => [
-            //     'required',
-            // ],
+            'marks[]' => [
+                'required',
+            ],
             'student_id' => [
                 'required',
             ],
-            // 'subject_id' =>[
-            //     'required',
-            // ],
+            'subject_id' =>[
+                'required',
+            ],
         ];
     }
 
-    // public function messages()
-    // {
-    //     return [
-    //         'subject_id.unique' => 'Subject Already Exists For This Student'
-    //     ];
-    // }
+    public function messages()
+    {
+        return [
+            'student_id.required' => 'Student ID Field Is Required',
+            'marks[].required' => 'Marks Field Is Required',
+        ];
+    }
 }
