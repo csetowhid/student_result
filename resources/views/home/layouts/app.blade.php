@@ -176,6 +176,13 @@
                   <p>All Students</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="{{route('studentuploads.create')}}" class="nav-link">
+                  <i class="fas fa-upload nav-icon"></i>
+                  <p>Upload</p>
+                </a>
+              </li>
               
             </ul>
           </li>
