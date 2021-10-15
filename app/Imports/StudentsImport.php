@@ -45,10 +45,23 @@ class StudentsImport implements ToModel, WithHeadingRow, SkipsOnError, WithValid
     public function rules(): array
     {
         return [
-            '*.email' => ['email','unique:students'],
-            // 'file' => ['required|mimes:xlsx'],
+            '*.email' => [
+                'email',
+                'unique:students'
+            ],
+            // 'file' => [
+            //     'required',
+            //     'mimes:xlsx'
+            // ],
         ];
     }
+
+    // public function messages()
+    // {
+    //     return [
+    //         'file.mimes' => 'Wrong File Upload',
+    //     ];
+    // }
 
 
     // public function onFailure(Failure ...$failure)
