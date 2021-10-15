@@ -179,7 +179,7 @@
 
               <li class="nav-item">
                 <a href="{{route('studentuploads.create')}}" class="nav-link">
-                  <i class="fas fa-upload nav-icon"></i>
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Upload</p>
                 </a>
               </li>
@@ -280,11 +280,40 @@
 
     <!---------Message---------------->
     @if (session('SUCCESS'))
-            <p id="successMessage" class="w-50 mx-auto alert alert-success text-center w-80">{{session('SUCCESS')}}</p>
-            @endif
-            @if (session('ERROR'))
-            <p id="successMessage" class="w-50 mx-auto alert alert-danger text-center w-80">{{session('ERROR')}}</p>
-            @endif
+        <p id="successMessage" class="w-50 mx-auto alert alert-success text-center w-80">{{session('SUCCESS')}}</p>
+    @endif
+    @if (session('ERROR'))
+        <p id="successMessage" class="w-50 mx-auto alert alert-danger text-center w-80">{{session('ERROR')}}</p>
+    @endif
+
+
+    @if (session()->has('failures'))
+    <table class="table table-danger w-50 mx-auto">
+      <tr>
+        <th>Row</th>
+        <th>Attributes</th>
+        <th>Errors</th>
+        <th>Value</th>
+      </tr>
+      @foreach (session()->get('failures') as $validation)
+      <tr>
+        <td>{{$validation->row()}}</td>
+        <td>{{$validation->attribute() }}</td>
+        <td>
+          {{-- <ul> --}}
+            @foreach ($validation->errors() as $e)
+            {{-- <li>{{$e}}</li> --}}
+            <p>{{$e}}</p>
+            @endforeach
+          {{-- </ul> --}}
+        </td>
+        <td>{{$validation->values()[$validation->attribute()]}}</td>
+      </tr>
+      @endforeach
+      
+    </table>
+        
+    @endif
     <!---------Message---------------->
     @yield('content')
   </div>

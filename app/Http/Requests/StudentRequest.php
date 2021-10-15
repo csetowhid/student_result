@@ -28,6 +28,7 @@ class StudentRequest extends FormRequest
             'email' => [
                 'required',
                 Rule::unique('students')->ignore($this->route('students')),
+                // Rule::unique('studentuploads')->ignore($this->route('studentuploads')),
             ],
             'first_name' => [
                 'required',

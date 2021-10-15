@@ -31,7 +31,7 @@
                   </div>
                   
                 </div>
-                <form action="{{route('students.store')}}" method="POST">
+                <form action="{{route('studentuploads.store')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   @include('studentupload._form', ['buttonText' => __('Create')])
                 </form>

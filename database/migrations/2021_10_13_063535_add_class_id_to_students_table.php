@@ -21,8 +21,7 @@ class AddClassIdToStudentsTable extends Migration
             $table->foreign('class_id')
             ->references('id')
             ->on('studentclasses')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('restrict');
         });
     }
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\StudentsImport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentuploadController extends Controller
 {
@@ -34,7 +36,23 @@ class StudentuploadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('file');
+
+
+        // $file = $request->file('file')->store('import');  //Local Server Import
+        // Excel::import(new StudentsImport, $file);
+
+        $import = new StudentsImport;
+        $import->import($file);
+
+        if($import->failures()->isNotEmpty()) {
+            return back()->withFailures($import->failures());
+        }
+
+        // dd($import->failures());
+        // (new StudentsImport)->import($file); //Importable use 
+
+        return back()->with('SUCCESS',__("Students Imported Successfully"));
     }
 
     /**
