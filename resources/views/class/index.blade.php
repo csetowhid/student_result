@@ -31,13 +31,22 @@
         <tr>
           <th class="text-center">Class Name</th>
           <th class="text-center">Total Students</th>
+          <th class="text-center">View</th>
         </tr> 
         </thead>
         <tbody>
           @forelse ($student_class as $class)
           <tr>
-            <td class="text-center">{{$class->class_id}}</td>
+            <td class="text-center">{{$class->classname->class_name}}</td>
             <td class="text-center">{{$class->total_student}}</td>
+              <td class="d-flex justify-content-center">
+                <button class="btn btn-info">
+                <a class="text-white" href="{{route('class.allstudent',$class->class_id)}}">
+                View
+              </a>
+            </button>
+              </td>
+            
           </tr>
           @empty
           <td colspan="3">{{__('No Data Found')}}</td>

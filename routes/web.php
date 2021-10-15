@@ -34,3 +34,5 @@ Route::resource('studentclasses',StudentclassController::class);
 Route::resource('studentuploads',StudentuploadController::class);
 
 Route::get('classstudent',[ClassstudentController::class, 'classstudent'])->name('classstudent');
+
+Route::get('class/all/students/{id}',[ClassstudentController::class, 'class_all_student'])->name('class.allstudent');
