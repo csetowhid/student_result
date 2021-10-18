@@ -27,7 +27,18 @@ class ClassstudentController extends Controller
     public function class_all_student($id)
     {
         $data['students'] = Student::where('class_id',$id)->get();
+        // $data['students'] = Student::where('class_id',$id)
+        //         ->join('marks','students.id','marks.student_id')
+        //         ->select('marks.*','students.*')
+        //         // ->select('sum(marks.marks)')
+                 
+
+        // //         // ->sum('marks.marks')
+
+        // //         // ->selectRaw('sum(marks) as totalmark,student_id')
+        //         ->get();
         $data['clas_name'] = Studentclass::where('id',$id)->first()->class_name;
+
         return view('class.allstudents',$data);
     }
 }

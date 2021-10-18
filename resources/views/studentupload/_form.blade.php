@@ -3,7 +3,11 @@
   <div class="input-group">
     <div class="custom-file">
       <input type="file" class="custom-file-input" name="file">
-      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+
+      {{-- <input type="file" class="custom-file-input" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"> --}}
+
+      <input type="file" class="custom-file-input" name="file" accept=".xlsx, .xls, .csv">
+      <label class="custom-file-label" for="leInputFile">Choose file</label>
     </div>
     
   </div>
