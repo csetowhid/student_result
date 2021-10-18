@@ -15,7 +15,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $data['subjects'] = Subject::all();
+        return view('subject.index',$data);
     }
 
     /**
@@ -43,7 +44,7 @@ class SubjectController extends Controller
         if(empty($subject)){
             return redirect()->back()->withInput();
         }
-        return redirect()->route('home')->with('SUCCESS',__("Subject Has Been Created Successfully"));
+        return redirect()->route('subjects.index')->with('SUCCESS',__("Subject Has Been Created Successfully"));
     }
 
     /**

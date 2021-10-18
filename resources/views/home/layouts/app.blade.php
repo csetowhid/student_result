@@ -64,7 +64,7 @@
       </li>
 
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
@@ -120,7 +120,7 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -141,7 +141,7 @@
           <img src="{{asset('backend/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{route('home')}}" class="d-block">Alexander Pierce</a>
+          <a href="{{route('home')}}" class="d-block">Dashboard</a>
         </div>
       </div>
 
@@ -196,12 +196,12 @@
                   <p>Add</p>
                 </a>
               </li>
-              {{-- <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+              <li class="nav-item">
+                <a href="{{route('subjects.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View</p>
+                  <p>All</p>
                 </a>
-              </li> --}}
+              </li>
               
             </ul>
           </li>
@@ -359,7 +359,7 @@
 <script src="{{asset('backend/dist/js/adminlte.js')}}"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('backend/dist/js/demo.js')}}"></script>
+{{-- <script src="{{asset('backend/dist/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('backend/dist/js/pages/dashboard.js')}}"></script>
 
