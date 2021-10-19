@@ -4,6 +4,7 @@ use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ClassstudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MarkController;
+use App\Http\Controllers\MarkuploadController;
 use App\Http\Controllers\StudentclassController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentuploadController;
@@ -32,6 +33,7 @@ Route::resource('subjects', SubjectController::class);
 Route::resource('marks', MarkController::class)->except('show');
 Route::resource('studentclasses',StudentclassController::class);
 Route::resource('studentuploads',StudentuploadController::class);
+Route::resource('markuploads',MarkuploadController::class);
 
 Route::get('classstudent',[ClassstudentController::class, 'classstudent'])->name('classstudent');
 

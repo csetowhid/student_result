@@ -221,12 +221,12 @@
                   <p>Add</p>
                 </a>
               </li>
-              {{-- <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+              <li class="nav-item">
+                <a href="{{route('markuploads.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View</p>
+                  <p>Upload</p>
                 </a>
-              </li> --}}
+              </li>
             </ul>
           </li>
 
