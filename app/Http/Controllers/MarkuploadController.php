@@ -36,29 +36,20 @@ class MarkuploadController extends Controller
      */
     public function store(Request $request)
     {
-        
-        try {
-            Excel::import(new MarksImport(), $request->file('file'));
-        } catch (\Exception $e) {
-            dd($e);
-            return redirect()->back()->with("error", "Failed to upload the file.");
-        }
-
-
-        // if($request->file('file')){
-        //     $file = $request->file('file');
-        //     $import = new MarksImport();
-        //     $import->import($file);
+        if($request->file('file')){
+            $file = $request->file('file');
+            $import = new MarksImport();
+            $import->import($file);
     
-        //     if($import->failures()->isNotEmpty()) {
-        //         return back()->withFailures($import->failures());
-        //     }
+            // if($import->failures()->isNotEmpty()) {
+            //     return back()->withFailures($import->failures());
+            // }
     
-        //     return back()->with('SUCCESS',__("Marks Imported Successfully"));
-        //  }
-        //  else{
-        //     return back()->with('SUCCESS',__("wrong"));
-        //  }
+            return back()->with('SUCCESS',__("Marks Imported Successfully"));
+         }
+         else{
+            return back()->with('SUCCESS',__("wrong"));
+         }
 
 
     }
