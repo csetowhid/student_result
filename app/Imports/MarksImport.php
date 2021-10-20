@@ -23,19 +23,57 @@ class MarksImport implements ToModel, WithHeadingRow, SkipsOnError, WithValidati
     */
     public function model(array $row)
     {
+        // $data = [];
+        // $obj = new Mark();
+        // foreach($row as $k => $r){
+        //     if ($k != 'student_id'){
+        //         $sub = Subject::select('id')->where('subject_name', ucfirst($k))->first();
+        //         $data['marks'] = $r;
+        //         $data['subject_id'] = $sub->id;
+        //         $data['student_id'] = $row['student_id'];
+        //         $obj = new Mark($data);
+        //         $obj->save();
+        //     }
+        // }
+        // return $obj;
+
+
+
+//         $data = [];
+//         $obj = new Mark();
+//         $subjects = Subject::pluck("id", "name")->toArray();
+//         foreach($row as $key => $rows){
+//             if ($key != 'student_id' && $key != 'group_id' ){
+//                 $data['subject_id'] = $subjects[ucfirst($key)];
+//                 $data['student_id'] = $row['student_id'];
+//                 $data['group_id'] = $row['group_id'];
+//                 $data['marks'] = $rows;
+//                 $obj = new Mark($data);
+// //                print "<pre>";
+// //                print_r($obj);
+// //                print "</pre>";
+//                 $obj->save();
+//             }
+//         }
+//         return $obj;
+
+
+
         $data = [];
         $obj = new Mark();
+        $sub = Subject::pluck('id','subject_name')->toArray();
         foreach($row as $k => $r){
             if ($k != 'student_id'){
-                $sub = Subject::select('id')->where('subject_name', ucfirst($k))->first();
                 $data['marks'] = $r;
-                $data['subject_id'] = $sub->id;
+                $data['subject_id'] = $sub[ucfirst($k)];
                 $data['student_id'] = $row['student_id'];
                 $obj = new Mark($data);
                 $obj->save();
             }
         }
         return $obj;
+
+
     }
 
     public function rules(): array

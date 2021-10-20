@@ -27,6 +27,7 @@ class MarkuploadController extends Controller
     {
         return view('markupload.create');
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -40,11 +41,11 @@ class MarkuploadController extends Controller
             $file = $request->file('file');
             $import = new MarksImport();
             $import->import($file);
-    
+
             // if($import->failures()->isNotEmpty()) {
             //     return back()->withFailures($import->failures());
             // }
-    
+
             return back()->with('SUCCESS',__("Marks Imported Successfully"));
          }
          else{
