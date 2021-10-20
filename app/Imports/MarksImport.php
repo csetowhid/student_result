@@ -68,11 +68,20 @@ class MarksImport implements ToModel, WithHeadingRow, SkipsOnError, WithValidati
                 $data['subject_id'] = $sub[ucfirst($k)];
                 $data['student_id'] = $row['student_id'];
                 $obj = new Mark($data);
+                // $obj->save();
+
+                // $validate = Mark::where('student_id',$data['student_id'])
+                //         ->where('subject_id',$data['subject_id'])->first();
+                        // dd($validate);
+                //         if($validate){
+    
+                //         }
+
                 $obj->save();
+                    
             }
         }
         return $obj;
-
 
     }
 
