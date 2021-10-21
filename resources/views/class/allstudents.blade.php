@@ -24,17 +24,21 @@
       <table class="table table-bordered table-striped">
         <thead>
         <tr>
+          <th class="text-center">Position</th>
+          <th class="text-center">Total Mark</th>
           <th class="text-center">First Name</th>
           <th class="text-center">Last Name</th>
           <th class="text-center">Email</th>
         </tr> 
         </thead>
         <tbody>
-          @forelse ($students as $student)
+          @forelse ($marks as $key => $mark)
           <tr>
-            <td class="text-center">{{$student->first_name}}</td>
-            <td class="text-center">{{$student->last_name}}</td>
-            <td class="text-center">{{$student->email}}</td>
+            <td class="text-center">{{$key+1}}</td>
+            <td class="text-center">{{$mark->topmark}}</td>
+            <td class="text-center">{{$mark->student->first_name}}</td>
+            <td class="text-center">{{$mark->student->last_name}}</td>
+            <td class="text-center">{{$mark->student->email}}</td>
           </tr>
           @empty
           <td colspan="3">{{__('No Data Found')}}</td>

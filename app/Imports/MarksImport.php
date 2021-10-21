@@ -63,10 +63,11 @@ class MarksImport implements ToModel, WithHeadingRow, SkipsOnError, WithValidati
         $obj = new Mark();
         $sub = Subject::pluck('id','subject_name')->toArray();
         foreach($row as $k => $r){
-            if ($k != 'student_id'){
+            if ($k != 'student_id' && $k != 'class_id'){
                 $data['marks'] = $r;
                 $data['subject_id'] = $sub[ucfirst($k)];
                 $data['student_id'] = $row['student_id'];
+                $data['class_id'] = $row['class_id'];
                 $obj = new Mark($data);
                 // $obj->save();
 

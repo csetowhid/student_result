@@ -31,6 +31,7 @@ class CreateMarksTable extends Migration
             ->on('subjects')
             ->onDelete('restrict')
             ->onUpdate('restrict');
+           
         });
     }
 

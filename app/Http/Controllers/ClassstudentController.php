@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mark;
 use App\Models\Student;
 use App\Models\Studentclass;
 use Illuminate\Http\Request;
@@ -26,19 +27,22 @@ class ClassstudentController extends Controller
 
     public function class_all_student($id)
     {
-        $data['students'] = Student::where('class_id',$id)->get();
-        // $data['students'] = Student::where('class_id',$id)
-        //         ->join('marks','students.id','marks.student_id')
-        //         ->select('marks.*','students.*')
-        //         // ->select('sum(marks.marks)')
-                 
-
-        // //         // ->sum('marks.marks')
-
-        // //         // ->selectRaw('sum(marks) as totalmark,student_id')
-        //         ->get();
+        // $data['students'] = Student::where('class_id',$id)->get();
+        $data['marks'] = Mark::with('student')
+                    ->where('class_id',$id)
+                    ->selectRaw('SUM(marks) AS topmark,student_id')
+                    ->groupBy('student_id')
+                    ->orderBy('topmark', 'desc')
+                    ->get();
         $data['clas_name'] = Studentclass::where('id',$id)->first()->class_name;
-
         return view('class.allstudents',$data);
+    }
+
+
+    public function select_student($id)
+    {
+        $student = Student::where('class_id',$id)->pluck("first_name","id");
+        return response()->json($student);
+
     }
 }

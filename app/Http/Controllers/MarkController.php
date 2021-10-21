@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MarkRequest;
 use App\Models\Mark;
 use App\Models\Student;
+use App\Models\Studentclass;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,7 @@ class MarkController extends Controller
     {
         $data['students'] = Student::all();
         $data['subjects'] = Subject::all();
+        $data['class'] = Studentclass::all();
         return view('marks.create', $data);
     }
 
@@ -72,14 +74,19 @@ class MarkController extends Controller
 
         ------------------------------------*/
 
-        /* --------Method -2 ------------
-        // for($i=0; $i<count($subject);$i++){
-        //     $data = Mark::create ([
-        //         'subject_id' => $subject[$i],
-        //         'marks' => $mark[$i],
-        //         'student_id' => $request->student_id,
-        //     ]);
-        // }
+        /* --------Method -2 ------------ 
+        for($i=0; $i < count($request->except('_token'));$i++){
+            $data['subject_id'] = $request->subject_id[$i];
+            $data['marks'] = $request->marks[$i];
+            $data['student_id'] = $request->student_id;
+            $data['class_id'] = $request->class_id;
+
+            // print "<pre>";
+            // print_r($data);
+            // print "</pre>";
+            // die();
+                 
+        }
         ---------------------------------*/
 
         for($i=0; $i < count($request->except('_token'));$i++){
@@ -87,6 +94,7 @@ class MarkController extends Controller
                 'subject_id' => $request->subject_id[$i],
                 'marks' => $request->marks[$i],
                 'student_id' => $request->student_id,
+                'class_id' => $request->class_id,
             ]);
         }
 

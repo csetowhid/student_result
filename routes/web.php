@@ -38,3 +38,4 @@ Route::resource('markuploads',MarkuploadController::class);
 Route::get('classstudent',[ClassstudentController::class, 'classstudent'])->name('classstudent');
 
 Route::get('class/all/students/{id}',[ClassstudentController::class, 'class_all_student'])->name('class.allstudent');
+Route::get('selectstudent/{id}',[ClassstudentController::class, 'select_student'])->name('selectstudent');

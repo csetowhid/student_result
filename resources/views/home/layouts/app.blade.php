@@ -368,5 +368,6 @@
                 $('#successMessage').fadeOut('fast');
                 }, 4000); // <-- time in milliseconds
 </script>
+@yield('js')
 </body>
 </html>
