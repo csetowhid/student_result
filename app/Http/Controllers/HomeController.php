@@ -23,7 +23,6 @@ class HomeController extends Controller
            ->get();
 
         //    dd($data);
-        
 
         return view('home.index',$data);
     }

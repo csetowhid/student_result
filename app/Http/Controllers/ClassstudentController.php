@@ -43,6 +43,5 @@ class ClassstudentController extends Controller
     {
         $student = Student::where('class_id',$id)->pluck("first_name","id");
         return response()->json($student);
-
     }
 }

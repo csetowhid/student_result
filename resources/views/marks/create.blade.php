@@ -108,7 +108,8 @@
   if(classs_Id){
     $.ajax({
       type:"GET",
-      url:"{{url('selectstudent')}}/"+classs_Id,
+      // url:"{{url('selectstudent')}}/"+classs_Id,
+      url: "<?php echo env('APP_URL'); ?>/selectstudent/" + classs_Id,
 
       success:function(res){    
 
